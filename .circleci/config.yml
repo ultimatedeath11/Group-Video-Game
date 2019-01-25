@@ -4,14 +4,15 @@
 #
 version: 2
 jobs:
+  dependencies:
+    pre:
+      - echo y | android update sdk --no-ui --all --filter "tools"
+      - echo y | android update sdk --no-ui --all --filter "build-tools-23.0.2"
+
   build:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
-	  dependencies:
-  		pre:
-    		- echo y | android update sdk --no-ui --all --filter "tools"
-    		- echo y | android update sdk --no-ui --all --filter "build-tools-23.0.2" 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
